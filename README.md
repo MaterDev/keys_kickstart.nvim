@@ -2,6 +2,8 @@
 
 My personal Neovim configuration with Go development support.
 
+[Cover](./cover.png)
+
 ## Prerequisites
 
 - Neovim >= 0.9.0
