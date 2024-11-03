@@ -1,14 +1,14 @@
 -- Install lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
     lazypath,
-  })
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -103,6 +103,12 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+-- Add these lines near the other vim.opt settings
+vim.opt.tabstop = 4 -- Width of tab character
+vim.opt.shiftwidth = 4 -- Width for autoindents
+vim.opt.expandtab = true -- Converts tabs to spaces
+vim.opt.softtabstop = 4 -- Number of spaces a tab counts for when editing
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
@@ -255,18 +261,17 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require("nvim-tree").setup {}
+      require('nvim-tree').setup {}
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end,
-},
-
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -850,7 +855,7 @@ require('lazy').setup({
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
-      
+
         mapping = cmp.mapping.preset.insert {
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -870,7 +875,7 @@ require('lazy').setup({
               fallback()
             end
           end, { 'i', 's' }),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item
+          ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
