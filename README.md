@@ -2,7 +2,7 @@
 
 My personal Neovim configuration with Go development support.
 
-[Cover](./cover.png)
+![Cover](./cover.png)
 
 ## Prerequisites
 
